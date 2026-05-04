@@ -1,9 +1,9 @@
 "use client";
 
-import type { ReactNode } from "react";
+import { useState, type ReactNode } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { DashboardSidebar } from "./DashboardSidebar";
 import { JalaliClock } from "./JalaliClock";
 
@@ -16,6 +16,7 @@ const subtitles: Partial<Record<string, string>> = {
 
 export function DashboardShell({ children }: { children: ReactNode }) {
   const pathname = usePathname();
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const titleForPath: Record<string, string> = {
     "/dashboard": "داشبورد",
     "/dashboard/employees": "کارکنان",
@@ -32,37 +33,77 @@ export function DashboardShell({ children }: { children: ReactNode }) {
       {/* mobile top bar */}
       <div className="fixed inset-x-0 top-0 z-40 flex items-center justify-between gap-3 border-b border-zinc-200 bg-white/90 px-4 py-3 backdrop-blur lg:hidden">
         <div className="flex items-center gap-2">
-          <details className="relative">
-            <summary className="list-none [&::-webkit-details-marker]:hidden">
-              <button
-                type="button"
-                className="inline-flex items-center justify-center rounded-xl border border-zinc-200 bg-white p-2 shadow-sm"
-                aria-label="بازکردن منو"
-              >
-                <Menu className="h-5 w-5" />
-              </button>
-            </summary>
-            <div className="absolute start-0 z-50 mt-2 w-64 rounded-2xl border border-zinc-200 bg-white p-2 shadow-xl">
-              <div className="space-y-1">
-                <Link href="/dashboard" className="block rounded-xl px-3 py-2 text-sm hover:bg-zinc-100">
-                  داشبورد
-                </Link>
-                <Link href="/dashboard/employees" className="block rounded-xl px-3 py-2 text-sm hover:bg-zinc-100">
-                  کارکنان
-                </Link>
-                <Link href="/dashboard/attendance" className="block rounded-xl px-3 py-2 text-sm hover:bg-zinc-100">
-                  حضور و غیاب
-                </Link>
-                <Link href="/dashboard/leave" className="block rounded-xl px-3 py-2 text-sm hover:bg-zinc-100">
-                  مرخصی
-                </Link>
-              </div>
-            </div>
-          </details>
+          <button
+            type="button"
+            className="inline-flex items-center justify-center rounded-xl border border-zinc-200 bg-white p-2 shadow-sm"
+            aria-label={mobileMenuOpen ? "بستن منو" : "بازکردن منو"}
+            aria-expanded={mobileMenuOpen}
+            aria-controls="mobile-nav-drawer"
+            onClick={() => setMobileMenuOpen((s) => !s)}
+            onFocus={() => setMobileMenuOpen(true)}
+          >
+            {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
           <div className="truncate text-sm font-semibold">{title}</div>
         </div>
         <JalaliClock compact />
       </div>
+
+      {mobileMenuOpen ? (
+        <div
+          className="fixed inset-0 z-50 bg-zinc-900/35 lg:hidden"
+          onClick={() => setMobileMenuOpen(false)}
+          role="presentation"
+        >
+          <aside
+            id="mobile-nav-drawer"
+            className="h-full w-72 max-w-[85vw] bg-white p-4 shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="mb-3 flex items-center justify-between">
+              <div className="text-sm font-semibold text-zinc-900">منوی ناوبری</div>
+              <button
+                type="button"
+                className="inline-flex items-center justify-center rounded-xl border border-zinc-200 bg-white p-2 shadow-sm"
+                aria-label="بستن منو"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                <X className="h-5 w-5" />
+              </button>
+            </div>
+            <nav className="space-y-1">
+              <Link
+                href="/dashboard"
+                className="block rounded-xl px-3 py-2 text-sm hover:bg-zinc-100"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                داشبورد
+              </Link>
+              <Link
+                href="/dashboard/employees"
+                className="block rounded-xl px-3 py-2 text-sm hover:bg-zinc-100"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                کارکنان
+              </Link>
+              <Link
+                href="/dashboard/attendance"
+                className="block rounded-xl px-3 py-2 text-sm hover:bg-zinc-100"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                حضور و غیاب
+              </Link>
+              <Link
+                href="/dashboard/leave"
+                className="block rounded-xl px-3 py-2 text-sm hover:bg-zinc-100"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                مرخصی
+              </Link>
+            </nav>
+          </aside>
+        </div>
+      ) : null}
 
       <div className="flex min-w-0 flex-1 flex-col">
         <header className="sticky top-0 z-30 hidden items-center justify-between gap-6 border-b border-zinc-200 bg-white/80 px-6 py-5 backdrop-blur lg:flex">

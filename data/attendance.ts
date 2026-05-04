@@ -1,0 +1,68 @@
+import type { AttendanceRow } from "@/types";
+
+/** تاریخ‌های واقعی گرینویچ؛ نمای شمسی در UI محاسبه می‌شود */
+export const attendanceSeed: AttendanceRow[] = [
+  {
+    id: "a1",
+    employeeId: "e1",
+    employeeName: "احمد وحیدی",
+    dateIso: "2026-05-01T03:30:00.000Z",
+    checkInIso: "2026-05-01T04:00:00.000Z",
+    checkOutIso: "2026-05-01T12:10:00.000Z",
+    status: "present",
+  },
+  {
+    id: "a2",
+    employeeId: "e2",
+    employeeName: "فاطمه رسولی",
+    dateIso: "2026-05-02T03:30:00.000Z",
+    checkInIso: "2026-05-02T04:42:00.000Z",
+    checkOutIso: "2026-05-02T12:20:00.000Z",
+    status: "late",
+  },
+  {
+    id: "a3",
+    employeeId: "e3",
+    employeeName: "محمد کاظمی",
+    dateIso: "2026-04-29T03:30:00.000Z",
+    checkInIso: "2026-04-29T21:05:00.000Z",
+    checkOutIso: "2026-04-30T06:05:00.000Z",
+    status: "present",
+  },
+  {
+    id: "a4",
+    employeeId: "e4",
+    employeeName: "زهرا احمدزی",
+    dateIso: "2026-04-30T03:30:00.000Z",
+    checkInIso: null,
+    checkOutIso: null,
+    status: "absent",
+  },
+  {
+    id: "a5",
+    employeeId: "e6",
+    employeeName: "نصیر احمد پارسا",
+    dateIso: "2026-05-02T03:30:00.000Z",
+    checkInIso: "2026-05-02T20:58:00.000Z",
+    checkOutIso: "2026-05-03T05:15:00.000Z",
+    status: "present",
+  },
+  {
+    id: "a6",
+    employeeId: "e8",
+    employeeName: "عبدالرضا خلیلی",
+    dateIso: "2026-05-03T03:30:00.000Z",
+    checkInIso: "2026-05-03T05:58:00.000Z",
+    checkOutIso: null,
+    status: "late",
+  },
+  {
+    id: "a7",
+    employeeId: "e7",
+    employeeName: "مریم نوری",
+    dateIso: "2026-05-03T03:30:00.000Z",
+    checkInIso: "2026-05-03T04:03:00.000Z",
+    checkOutIso: "2026-05-03T12:06:00.000Z",
+    status: "present",
+  },
+];

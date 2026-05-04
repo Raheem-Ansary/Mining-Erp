@@ -1,0 +1,27 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-sans: var(--font-vazirmatn), ui-sans-serif, system-ui, sans-serif;
+  --color-brand-950: oklch(0.22 0.04 250);
+  --color-brand-800: oklch(0.32 0.06 248);
+  --color-brand-600: oklch(0.45 0.12 246);
+  --color-brand-400: oklch(0.62 0.14 246);
+}
+
+html {
+  color-scheme: light;
+}
+
+body {
+  @apply bg-zinc-100 text-zinc-900 antialiased font-sans;
+}
+
+/* subtle grid for SaaS polish */
+.sheet {
+  background-image: radial-gradient(
+    circle at 1px 1px,
+    oklch(0.9 0.01 260 / 0.35) 1px,
+    transparent 0
+  );
+  background-size: 28px 28px;
+}

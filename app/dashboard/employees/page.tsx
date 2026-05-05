@@ -1,5 +1,2 @@
-import { EmployeesModule } from "@/modules/employees/EmployeesModule";
-
-export default function Page() {
-  return <EmployeesModule />;
-}
+import { redirect } from "next/navigation";
+export default function Page(){redirect("/dashboard/hr/employees");}

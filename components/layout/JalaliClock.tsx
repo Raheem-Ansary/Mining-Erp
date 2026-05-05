@@ -1,47 +1,54 @@
 "use client";
 
-import dayConfigured, { formatJalali, formatJalaliDateShort } from "@/lib/dayjs";
+import { useLocale } from "@/components/providers/LocaleProvider";
 import type { FC } from "react";
 import { useEffect, useMemo, useState } from "react";
+import { formatAfghanDate } from "@/lib/format";
 
-/** نمای مشترک تاریخ شمسی + ساعت محلی؛ ساعت با ارقام فارسی */
 export const JalaliClock: FC<{ compact?: boolean }> = ({ compact }) => {
   const [tick, setTick] = useState(0);
+  const { locale } = useLocale();
 
   useEffect(() => {
-    const t = window.setInterval(() => setTick((x) => x + 1), 1000 * 60);
-    return () => window.clearInterval(t);
+    const timer = window.setInterval(() => setTick((x) => x + 1), 60_000);
+    return () => window.clearInterval(timer);
   }, []);
 
-  const { dateLong, dateShort, timeText } = useMemo(() => {
+  const { dateLong, timeText } = useMemo(() => {
     void tick;
-    const dateLong = formatJalali(dayConfigured(), "dddd، D MMMM YYYY");
-    const dateShort = formatJalaliDateShort(dayConfigured());
+    const localeCode = locale === "pashto" ? "ps-AF" : "fa-AF";
+    const now = new Date();
+    const dateLong = formatAfghanDate(now, locale, {
+      weekday: "long",
+      day: "numeric",
+      month: "long",
+    });
 
     try {
       return {
         dateLong,
-        dateShort,
-        timeText: new Intl.DateTimeFormat("fa-AF", {
+        timeText: new Intl.DateTimeFormat(localeCode, {
           hour: "2-digit",
           minute: "2-digit",
           hourCycle: "h23",
-        }).format(new Date()),
+        }).format(now),
       };
     } catch {
       return {
         dateLong,
-        dateShort,
-        timeText: dayConfigured().format("HH:mm"),
+        timeText: now.toLocaleTimeString(localeCode, {
+          hour: "2-digit",
+          minute: "2-digit",
+          hour12: false,
+        }),
       };
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [tick]);
+  }, [locale, tick]);
 
   if (compact) {
     return (
       <div className="text-end leading-tight" dir="rtl">
-        <div className="text-xs text-zinc-500">{dateShort}</div>
+        <div className="text-xs font-medium text-zinc-600">{dateLong}</div>
         <div className="text-sm font-semibold text-zinc-900 tabular-nums" dir="ltr">
           {timeText}
         </div>
@@ -50,10 +57,8 @@ export const JalaliClock: FC<{ compact?: boolean }> = ({ compact }) => {
   }
 
   return (
-    <div className="rounded-2xl border border-zinc-200 bg-white px-5 py-3 text-sm shadow-sm">
-      <div className="text-xs text-zinc-500">تاریخ (شمسی)</div>
-      <div className="mt-1 font-semibold text-zinc-900">{dateLong}</div>
-      <div className="mt-2 text-xs text-zinc-500">ساعت محلی سیستم</div>
+    <div className="rounded-2xl border border-zinc-200/80 bg-white/90 px-5 py-3 text-sm shadow-sm shadow-zinc-900/5">
+      <div className="font-semibold text-zinc-900">{dateLong}</div>
       <div className="mt-1 text-lg font-bold text-brand-950 tabular-nums" dir="ltr">
         {timeText}
       </div>

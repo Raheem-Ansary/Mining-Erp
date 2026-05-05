@@ -1,5 +1,2 @@
-import { AttendanceModule } from "@/modules/attendance/AttendanceModule";
-
-export default function Page() {
-  return <AttendanceModule />;
-}
+import { redirect } from "next/navigation";
+export default function Page(){redirect("/dashboard/hr/attendance");}

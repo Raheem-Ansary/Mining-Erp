@@ -10,12 +10,12 @@ type CardProps = {
 export function Card({ title, action, children, className }: CardProps) {
   return (
     <section
-      className={`rounded-2xl border border-zinc-200/70 bg-white p-5 shadow-sm ${className ?? ""}`}
+      className={`rounded-3xl border border-zinc-200/80 bg-white/92 p-5 shadow-[0_18px_48px_-24px_rgba(24,24,27,0.22)] ${className ?? ""}`}
     >
       {(title || action) && (
         <div className="mb-4 flex items-start justify-between gap-3">
           {title ? (
-            <h2 className="text-base font-semibold text-zinc-900">{title}</h2>
+            <h2 className="text-base font-semibold text-zinc-950">{title}</h2>
           ) : (
             <div />
           )}

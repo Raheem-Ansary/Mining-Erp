@@ -1,0 +1,85 @@
+{
+  "app": {
+    "title": "د کان او پروسس ERP",
+    "tagline": "مدغم اداري سيستم"
+  },
+  "language": {
+    "dari": "دري",
+    "pashto": "پښتو",
+    "switch": "ژبه"
+  },
+  "common": {
+    "viewDetails": "جزئيات وګورئ",
+    "status": "حالت",
+    "actions": "عمليات",
+    "name": "نوم",
+    "date": "نېټه",
+    "amount": "مقدار",
+    "search": "لټون",
+    "export": "صادرول",
+    "pending": "انتظار",
+    "approved": "تاييد",
+    "rejected": "رد",
+    "present": "حاضر",
+    "absent": "غير حاضر",
+    "late": "ځنډ"
+  },
+  "header": {
+    "clock": "محلي وخت",
+    "jalaliDate": "شمسي نېټه"
+  },
+  "sidebar": {
+    "dashboard": "ډشبورډ",
+    "overview": "عمومي کتنه",
+    "hr": "بشري منابع",
+    "finance": "مالي",
+    "procurement": "تدارکات",
+    "logistics": "لوژستیک",
+    "inventory": "ګودام",
+    "hrOverview": "HR ډشبورډ",
+    "employees": "کارکوونکي",
+    "attendance": "حاضري",
+    "leaves": "رخصتۍ",
+    "payroll": "معاشات",
+    "performance": "د کړنې ارزونه",
+    "financeOverview": "مالي ډشبورډ",
+    "expenses": "مصارف",
+    "income": "عواید",
+    "reports": "مالي راپور",
+    "budget": "بودجه",
+    "procurementOverview": "د تدارکاتو ډشبورډ",
+    "purchaseRequests": "د پېرود غوښتنې",
+    "orders": "سپارښتنې",
+    "suppliers": "عرضه کوونکي",
+    "approvals": "تایيدیې",
+    "logisticsOverview": "لوژستیک ډشبورډ",
+    "transfers": "انتقالات",
+    "vehicles": "وسایط",
+    "routes": "مسیرونه",
+    "fuel": "تیل",
+    "drivers": "چلوونکي",
+    "inventoryOverview": "د ګودام ډشبورډ",
+    "stock": "موجودي",
+    "inbound": "ورود اجناس",
+    "outbound": "خروج اجناس",
+    "categories": "کتګورۍ",
+    "inventoryReports": "د ګودام راپور"
+  },
+  "overview": {
+    "cards": {
+      "employees": "ټول کارکوونکي",
+      "present": "نن حاضر",
+      "absent": "نن غير حاضر",
+      "openLeaves": "خلاصې رخصتۍ"
+    },
+    "weekly": "د اوونۍ حاضري",
+    "notifications": "خبرتياوې"
+  },
+  "modules": {
+    "hr": "د بشري منابعو مديريت",
+    "finance": "مالي مديريت",
+    "procurement": "د تدارکاتو مديريت",
+    "logistics": "د لوژستیک مديريت",
+    "inventory": "د ګودام مديريت"
+  }
+}

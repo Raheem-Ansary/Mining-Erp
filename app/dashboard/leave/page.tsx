@@ -1,5 +1,2 @@
-import { LeaveModule } from "@/modules/leave/LeaveModule";
-
-export default function Page() {
-  return <LeaveModule />;
-}
+import { redirect } from "next/navigation";
+export default function Page(){redirect("/dashboard/hr/leaves");}

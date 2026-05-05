@@ -1,45 +1,33 @@
 "use client";
-
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Tooltip,
-  Filler,
-} from "chart.js";
+import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Tooltip, Filler } from "chart.js";
 import { Line } from "react-chartjs-2";
-import dayConfigured, { formatJalaliDateShort } from "@/lib/dayjs";
+import dayConfigured from "@/lib/dayjs";
 import { weeklyAttendanceSeries } from "@/data/dashboard-summary";
-import { formatNumber } from "@/lib/format";
+import { formatAfghanDate, formatNumber } from "@/lib/format";
+import { useLocale } from "@/components/providers/LocaleProvider";
 
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Tooltip,
-  Filler,
-);
+ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Tooltip, Filler);
 
 export function WeeklyAttendanceChart() {
-  const labels = Array.from({ length: 7 }, (_, i) => {
-    const d = dayConfigured().subtract(6 - i, "day");
-    return formatJalaliDateShort(d);
-  });
-
+  const { locale } = useLocale();
+  const unit = locale === "pashto" ? "کسان" : "نفر";
+  const labels = Array.from({ length: 7 }, (_, i) =>
+    formatAfghanDate(dayConfigured().subtract(6 - i, "day").toDate(), locale, {
+      day: "numeric",
+      month: "short",
+    }),
+  );
   const data = {
     labels,
     datasets: [
       {
-        label: "تعداد حضور",
         data: weeklyAttendanceSeries.map((x) => x.attendanceCount),
         fill: true,
         tension: 0.35,
-        borderColor: "oklch(0.38 0.11 246)",
-        backgroundColor: "oklch(0.93 0.03 246 / 0.55)",
+        borderColor: "oklch(0.44 0.08 232)",
+        backgroundColor: "oklch(0.92 0.03 80 / 0.45)",
         pointRadius: 3,
+        pointBackgroundColor: "oklch(0.63 0.11 74)",
       },
     ],
   };
@@ -51,31 +39,19 @@ export function WeeklyAttendanceChart() {
         options={{
           responsive: true,
           maintainAspectRatio: false,
-          layout: {
-            padding: { top: 6, bottom: 0, left: 0, right: 0 },
-          },
           plugins: {
             legend: { display: false },
             tooltip: {
-              rtl: false,
               callbacks: {
-                label: (ctx) => `${formatNumber(Number(ctx.parsed.y))} نفر حضور ثبت‌شده`,
+                label: (ctx) => `${formatNumber(Number(ctx.parsed.y), locale)} ${unit}`,
               },
             },
           },
           scales: {
-            x: {
-              grid: { display: false },
-            },
+            x: { grid: { display: false } },
             y: {
               beginAtZero: true,
-              grid: {
-                color: "oklch(0.9 0.01 260 / 0.8)",
-              },
-              ticks: {
-                precision: 0,
-                callback: (v) => formatNumber(Number(v)),
-              },
+              ticks: { callback: (v) => formatNumber(Number(v), locale) },
             },
           },
         }}

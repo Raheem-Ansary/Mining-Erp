@@ -1,0 +1,85 @@
+{
+  "app": {
+    "title": "ERP معادن و پروسس",
+    "tagline": "سیستم یکپارچه سازمانی"
+  },
+  "language": {
+    "dari": "دری",
+    "pashto": "پښتو",
+    "switch": "زبان"
+  },
+  "common": {
+    "viewDetails": "مشاهده جزئیات",
+    "status": "وضعیت",
+    "actions": "عملیات",
+    "name": "نام",
+    "date": "تاریخ",
+    "amount": "مبلغ",
+    "search": "جستجو",
+    "export": "صدور",
+    "pending": "در انتظار",
+    "approved": "تایید شده",
+    "rejected": "رد شده",
+    "present": "حاضر",
+    "absent": "غایب",
+    "late": "تأخیر"
+  },
+  "header": {
+    "clock": "زمان محلی",
+    "jalaliDate": "تاریخ شمسی"
+  },
+  "sidebar": {
+    "dashboard": "داشبورد",
+    "overview": "نمای کلی",
+    "hr": "منابع بشری",
+    "finance": "مالی",
+    "procurement": "تدارکات",
+    "logistics": "لوجستیک",
+    "inventory": "انبار",
+    "hrOverview": "داشبورد HR",
+    "employees": "کارکنان",
+    "attendance": "حضور و غیاب",
+    "leaves": "رخصتی‌ها",
+    "payroll": "معاشات",
+    "performance": "ارزیابی عملکرد",
+    "financeOverview": "داشبورد مالی",
+    "expenses": "مصارف",
+    "income": "عواید",
+    "reports": "راپور مالی",
+    "budget": "بودجه",
+    "procurementOverview": "داشبورد تدارکات",
+    "purchaseRequests": "درخواست خرید",
+    "orders": "سفارشات",
+    "suppliers": "تامین‌کنندگان",
+    "approvals": "تاییدیه‌ها",
+    "logisticsOverview": "داشبورد لوجستیک",
+    "transfers": "انتقالات",
+    "vehicles": "وسایط",
+    "routes": "مسیرها",
+    "fuel": "سوخت",
+    "drivers": "رانندگان",
+    "inventoryOverview": "داشبورد انبار",
+    "stock": "موجودی",
+    "inbound": "ورود اجناس",
+    "outbound": "خروج اجناس",
+    "categories": "کتگوری‌ها",
+    "inventoryReports": "راپور انبار"
+  },
+  "overview": {
+    "cards": {
+      "employees": "کل کارکنان",
+      "present": "حاضر امروز",
+      "absent": "غایب امروز",
+      "openLeaves": "رخصتی‌های باز"
+    },
+    "weekly": "روند حضور هفتگی",
+    "notifications": "اطلاعیه‌ها"
+  },
+  "modules": {
+    "hr": "مدیریت منابع بشری",
+    "finance": "مدیریت مالی",
+    "procurement": "مدیریت تدارکات",
+    "logistics": "مدیریت لوجستیک",
+    "inventory": "مدیریت انبار"
+  }
+}
